@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn:hover {
+  background: linear-gradient(
+    92.23deg,
+    #ff56b6 21.43%,
+    #b936ee 50.63%,
+    #3bace2 100%,
+    #406aff 117.04%
+  );
+  box-shadow: 0px 4.42184px 107.23px rgba(255, 86, 246, 0.51);
+}
+
+.btn {
+  background: linear-gradient(
+    92.23deg,
+    #406aff 21.43%,
+    #3bace2 50.63%,
+    #b936ee 100%,
+    #ff56f6 117.04%
+  );
+}
+
+.gradient,
+.active {
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  height: 68px;
+  width: 68px;
+  color: #ff0000;
+}
+.active2 {
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10%;
+  height: 38px;
+  width: 100px;
+}
+.buttons a {
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.buttons a:hover {
+  transform: scale(1.1);
+}
+
+.buttons a .i {
+  margin-left: 16px;
+  font-size: large;
+  color: white;
+  transition: color 0.5s ease;
+}
+
+.buttons a:hover .i {
+  color: rgb(255, 1, 1);
+}
+
+.profile-image {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10%;
+}
+.profile-image2 {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.section {
+  @apply py-8 lg:py-24 lg:h-screen flex items-center;
+}

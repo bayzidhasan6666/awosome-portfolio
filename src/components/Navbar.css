@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Berkshire+Swash&family=Cookie&family=Estonia&family=Great+Vibes&family=Josefin+Slab:wght@100;400&family=Noto+Serif+Makasar&family=Poppins:wght@400;500;600;700;800;900&family=tg&display=swap');
+.tg {
+  font-family: Berkshire Swash;
+}
+.Noto {
+  font-family: Noto Serif Makasar;
+}
+.neu {
+  background: linear-gradient(145deg, #212428, #212428);
+  border-radius: 20%;
+  box-shadow: 10.21px 10.21px 11px #212428, -10.21px -10.21px 11px #212428;
+  color: white;
+}
