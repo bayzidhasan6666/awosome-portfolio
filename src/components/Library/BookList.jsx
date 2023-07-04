@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BsArrowUpRightSquare, BsTrash } from 'react-icons/bs';
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -20,27 +21,35 @@ const BookList = () => {
   return (
     <div className="container mx-auto py-8">
       <h1 className="heading">My Library</h1>
-      <div className="grid grid-cols-1 gap-4  md:grid-cols-2 lg:grid-cols-3 my-10">
+      <div className="grid grid-cols-1 gap-6  md:grid-cols-2 lg:grid-cols-3 my-10 w-fit mx-auto">
         {books.map((book) => (
-          <div
-            key={book.id}
-            className="card shadow-lg rounded-lg overflow-hidden"
-          >
-            <img
-              src={
-                'https://4.bp.blogspot.com/-ahPi8XI7wlg/Vxr78Iq7KYI/AAAAAAAARX4/Y--V8HQmBToG8Wa-XbGZYkCMrMK-_-eQQCLcB/s1600/Holy-Quran-1-13.jpg'
-              }
-              alt={book.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-bold mb-2">{book.title}</h2>
-              <p className="text-gray-400 mb-4">Author: {book.author}</p>
-              <p className="text-gray-400 mb-4">Genre: {book.genre}</p>
-              <p className="text-gray-400 mb-4">Language: {book.language}</p>
-              <p className="text-gray-400">{book.description}</p>
+          <>
+            {' '}
+            <div
+              key={book.id}
+              className=" group relative items-center justify-center overflow-hidden cursor-pointer "
+            >
+              <figure className="h-96 w-[350px]">
+                <img
+                  className="h-full w-full object-cover group-hover:rotate-3 group-hover:scale-125 transition-transform duration-500"
+                  src="https://wafilife-media.wafilife.com/uploads/2021/03/jibon-theke-neya.jpg"
+                  alt="image"
+                />
+              </figure>
+              <div className="absolute inset-0 bg-gradient-to-b group-hover:from-[#1c0202bf] group-hover:via-[#1c0202bf] group-hover:to-[#1c0202bf] from-black/10 via-black/10 to-black/80"></div>
+              <div className="absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all">
+                {' '}
+                <h2 className="text-3xl tg  text-white mb-5">{book.title}</h2>
+                <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {book.description}
+                </p>
+                <div className="card-actions gap-6 mt-1 flex justify-between px-6">
+                  <BsTrash className="text-red-500 cursor-pointer w-5 h-5"></BsTrash>
+                  <BsArrowUpRightSquare className="text-emerald-500 cursor-pointer w-5 h-5"></BsArrowUpRightSquare>
+                </div>
+              </div>
             </div>
-          </div>
+          </>
         ))}
       </div>
     </div>
