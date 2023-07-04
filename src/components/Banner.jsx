@@ -1,12 +1,13 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 import Buttons from './Buttons';
+import Tilty from 'react-tilty';
 
 const Banner = () => {
   return (
     <div
       id="home"
-      className="mx-auto text-container flex flex-col-reverse md:flex-row items-center justify-around gap-5 md:gap-20 text-[#d4d4d4] space-y-3 pt-20"
+      className="mx-auto text-container flex flex-col-reverse md:flex-row items-center justify-around gap-5 md:gap-20 text-[#d4d4d4] space-y-3 md:pt-20"
     >
       <div className="md:w-1/2">
         <p className="uppercase tg  bg-gradient-to-r from-red-600 to-purple-600 bg-clip-text text-transparent text-xs">
@@ -34,13 +35,13 @@ const Banner = () => {
         </p>
         <Buttons></Buttons>
       </div>
-      <div className="">
+      <Tilty className="">
         <img
           className="profile-image"
           src="https://i.ibb.co/Lh9Z3DQ/profile-h-1-removebg-preview.png"
           alt="Profile"
         />
-      </div>
+      </Tilty>
     </div>
   );
 };

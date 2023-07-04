@@ -3,21 +3,21 @@ import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import About from './components/About';
 import Contact from './components/Contact';
-import Library from './components/Library';
+import Education from './components/Education';
 import Blog from './components/Blog';
 import Header from './components/Header';
 
 const App = () => {
   return (
-    <div className="bg-site">
+    <div className="space-y-10">
       <Header></Header>
       <Navbar></Navbar>
       <Banner></Banner>
       <About></About>
-      <Library></Library>
+      <Education></Education>
       <Blog></Blog>
       <Contact></Contact>
-      <div className="h-[4000px]"></div>
+      <div className="h-fit"></div>
     </div>
   );
 };

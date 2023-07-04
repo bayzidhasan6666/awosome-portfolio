@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiHomeAlt, BiUser } from 'react-icons/bi';
+import { BiHomeAlt, BiSolidGraduation, BiUser } from 'react-icons/bi';
 import {
   BsClipboardData,
   BsBriefcase,
@@ -38,10 +38,10 @@ const Navbar = () => {
             activeClass="active"
             smooth={true}
             spy={true}
-            to="library"
+            to="education"
             className="cursor-pointer w-[60px] flex items-center justify-center "
           >
-            <BsClipboardData></BsClipboardData>
+            <BiSolidGraduation></BiSolidGraduation>
           </Link>
           <Link
             activeClass="active"

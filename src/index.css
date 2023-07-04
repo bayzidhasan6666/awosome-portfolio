@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Berkshire+Swash&family=Cookie&family=Estonia&family=Great+Vibes&family=Josefin+Slab:wght@100;400&family=Noto+Serif+Makasar&family=Poppins:wght@400;500;600;700;800;900&family=tg&display=swap');
+.tg {
+  font-family: Berkshire Swash;
+}
+.Noto {
+  font-family: Noto Serif Makasar;
+}
+.neu {
+  background: linear-gradient(145deg, #212428, #212428);
+  border-radius: 20%;
+  box-shadow: 10.21px 10.21px 11px #212428, -10.21px -10.21px 11px #212428;
+  color: white;
+}
+
 .btn:hover {
   background: linear-gradient(
     92.23deg,
@@ -86,7 +100,77 @@
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
   border-radius: 50%;
 }
+.heading {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  animation: bgAnimation 20s ease-in-out infinite;
+  transition: box-shadow 0.3s ease-in-out;
+  width: fit-content;
+  margin: auto;
+  color: linear-gradient(to right, #ff007f, #b804ff);
+  font-weight: 400;
+  font-family: Berkshire Swash;
+}
 
 .section {
   @apply py-8 lg:py-24 lg:h-screen flex items-center;
+}
+.about-description {
+  text-align: start;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+
+  border-radius: 10px;
+  background: #212428;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3), -4px -4px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  color: #d3d3d4;
+}
+
+.about-description:hover {
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  color: #ececee;
+}
+.neu {
+  text-align: start;
+  margin: auto;
+
+  border-radius: 10px;
+  background: #212428;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3), -4px -4px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  color: #d3d3d4;
+}
+.card {
+  text-align: start;
+  margin: auto;
+  height: 400px;
+  border-radius: 10px;
+  background: #212428;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3), -4px -4px 4px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  color: #d3d3d4;
+}
+
+.nbtn {
+  text-align: center;
+  margin: auto;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #212428;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), -2px -2px 2px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  color: #d3d3d4;
+  text-transform: uppercase;
+  font-family: Berkshire Swash;
+}
+
+.nbtn:hover {
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  color: #ececee;
 }
