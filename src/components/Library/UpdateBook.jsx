@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Header from '../Header';
+import { useParams } from 'react-router-dom';
 
-const AddBooks = () => {
+const UpdateBook = () => {
+  const { id } = useParams();
+  const [book, setBook] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     writer: '',
@@ -11,6 +14,21 @@ const AddBooks = () => {
     description: '',
     image: '',
   });
+
+  useEffect(() => {
+    const fetchBook = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/books/${id}`);
+        const data = await response.json();
+        setBook(data);
+        setFormData(data); // Set the book data as the initial form values
+      } catch (error) {
+        console.error('Error fetching book:', error);
+      }
+    };
+
+    fetchBook();
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +42,8 @@ const AddBooks = () => {
     }
 
     // Send the book data to the server
-    fetch('http://localhost:5000/books', {
-      method: 'POST',
+    fetch(`http://localhost:5000/books/${id}`, {
+      method: 'PUT', // or 'PATCH'
       headers: {
         'Content-Type': 'application/json',
       },
@@ -33,8 +51,8 @@ const AddBooks = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Book added successfully:', data);
-        // Reset the form after successful submission
+        console.log('Book updated successfully:', data);
+        // Reset the form after successful update
         setFormData({
           name: '',
           writer: '',
@@ -47,12 +65,12 @@ const AddBooks = () => {
         // Show Swal notification
         Swal.fire({
           icon: 'success',
-          title: 'Book Submitted',
-          text: 'The book has been successfully submitted!',
+          title: 'Book Updated',
+          text: 'The book has been successfully updated!',
         });
       })
       .catch((error) => {
-        console.error('Error adding book:', error);
+        console.error('Error updating book:', error);
       });
   };
 
@@ -63,6 +81,9 @@ const AddBooks = () => {
     });
   };
 
+  if (!book) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       {' '}
@@ -70,8 +91,7 @@ const AddBooks = () => {
       <section id="" className="py-20 tg">
         <div className="mb-10">
           {' '}
-          <h1 className="heading gradient-text">Add 
-          A Book</h1>
+          <h1 className="heading gradient-text">Update This Book</h1>
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg shadow-2xl p-8 neu">
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -167,9 +187,9 @@ const AddBooks = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="nbtn shadow-xl w-full  py-4 px-4 rounded-lg"
+                className="nbtn shadow-xl w-full text-white py-4 px-4 rounded-lg"
               >
-                Submit
+                Update
               </button>
             </div>
           </form>
@@ -179,4 +199,4 @@ const AddBooks = () => {
   );
 };
 
-export default AddBooks;
+export default UpdateBook;

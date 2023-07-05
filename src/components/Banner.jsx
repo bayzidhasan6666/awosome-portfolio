@@ -35,13 +35,13 @@ const Banner = () => {
         </p>
         <Buttons></Buttons>
       </div>
-      <Tilty className="">
+      <div className="">
         <img
           className="profile-image"
           src="https://i.ibb.co/Lh9Z3DQ/profile-h-1-removebg-preview.png"
           alt="Profile"
         />
-      </Tilty>
+      </div>
     </div>
   );
 };

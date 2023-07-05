@@ -10,10 +10,10 @@ const Buttons = () => {
       >
         <FiFacebook className="i"></FiFacebook>
       </a>
-      <a target="_blank" href="https://web.twitter.com">
+      <a target="_blank" href="#">
         <FiTwitter className="i"></FiTwitter>
       </a>
-      <a target="_blank" href="https://web.linkedin.com">
+      <a target="_blank" href="#">
         <FiLinkedin className="i"></FiLinkedin>
       </a>
     </div>

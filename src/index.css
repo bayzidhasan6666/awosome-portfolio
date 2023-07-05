@@ -103,13 +103,23 @@
 .heading {
   padding: 10px 20px;
   border-radius: 8px;
-  background: #212428;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
   animation: bgAnimation 20s ease-in-out infinite;
   transition: box-shadow 0.3s ease-in-out;
   width: fit-content;
   margin: auto;
-  color: linear-gradient(to right, #ff007f, #b804ff);
+  font-weight: 400;
+  color: rgb(255, 0, 76);
+  font-family: Berkshire Swash;
+}
+.add {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #212428;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
+  animation: bgAnimation 20s ease-in-out infinite;
+  transition: box-shadow 0.3s ease-in-out;
+  width: fit-content;
   font-weight: 400;
   font-family: Berkshire Swash;
 }
@@ -164,16 +174,17 @@
   background: #212428;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3), -2px -2px 2px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
-  color: #d3d3d4;
+  color: rgb(255, 0, 76);
   text-transform: uppercase;
   font-family: Berkshire Swash;
+  letter-spacing: 2px; 
 }
 
 .nbtn:hover {
   background: #212428;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
-  color: #ececee;
 }
+
 .bangla {
   font-family: Galada;
 }

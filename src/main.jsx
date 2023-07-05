@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Library from './components/Library/Library.jsx';
 import AddBooks from './components/Library/AddBooks.jsx';
 import Details from './components/Library/Details.jsx';
+import UpdateBook from './components/Library/UpdateBook.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/details/:id',
     element: <Details></Details>,
-
+  },
+  {
+    path: '/edit/:id',
+    element: <UpdateBook></UpdateBook>,
   },
 ]);
 

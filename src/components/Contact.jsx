@@ -2,9 +2,9 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <section id='contact' className="py-20 tg">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg shadow-2xl p-8 neu">
-      
+    <section id="contact" className="py-20 tg space-y-10">
+      <h1 className="heading">Contact</h1>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg shadow-2xl p-8 neu ">
         <form className="space-y-6">
           <div className="flex flex-col">
             <label htmlFor="name" className="text-white mb-2">
