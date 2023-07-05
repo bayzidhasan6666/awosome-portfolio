@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Berkshire+Swash&family=Cookie&family=Estonia&family=Great+Vibes&family=Josefin+Slab:wght@100;400&family=Noto+Serif+Makasar&family=Poppins:wght@400;500;600;700;800;900&family=tg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Berkshire+Swash&family=Cookie&family=Estonia&family=Galada&family=Great+Vibes&family=Josefin+Slab:wght@100;400&family=Noto+Serif+Makasar&family=Poppins:wght@400;500;600;700;800;900&family=Tangerine&display=swap');
 .tg {
   font-family: Berkshire Swash;
 }
@@ -173,4 +173,7 @@
   background: #212428;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3), -6px -6px 6px rgba(0, 0, 0, 0.3);
   color: #ececee;
+}
+.bangla {
+  font-family: Galada;
 }
