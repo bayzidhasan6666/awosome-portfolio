@@ -24,7 +24,7 @@ const AddBooks = () => {
     }
 
     // Send the book data to the server
-    fetch('http://localhost:5000/books', {
+    fetch('https://atikul-islam-books-server.vercel.app/books', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

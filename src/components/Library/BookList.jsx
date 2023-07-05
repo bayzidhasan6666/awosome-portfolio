@@ -10,7 +10,9 @@ const BookList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/books');
+        const response = await fetch(
+          'https://atikul-islam-books-server.vercel.app/books'
+        );
         const data = await response.json();
         setBooks(data);
       } catch (error) {
@@ -34,7 +36,7 @@ const BookList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Send the delete request to the server
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://atikul-islam-books-server.vercel.app/books/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -65,7 +67,7 @@ const BookList = () => {
     <div className="container mx-auto py-8">
       <div className="">
         <h1 className="heading">My Library</h1>
-        <div className='mt-10'>
+        <div className="mt-10">
           {' '}
           <Link
             to={'/addBooks'}
