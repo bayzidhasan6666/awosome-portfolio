@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="py-3">
+    <div className="py-3 px-2">
       <div className="container tg mx-auto">
         <div className="flex justify-between items-center">
           <Link to={'/'}>

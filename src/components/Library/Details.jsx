@@ -9,7 +9,9 @@ const Details = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/books/${id}`);
+        const response = await fetch(
+          `https://atikul-islam-books-server.vercel.app/books/${id}`
+        );
         const data = await response.json();
         setBook(data);
       } catch (error) {
@@ -21,7 +23,11 @@ const Details = () => {
   }, [id]);
 
   if (!book) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-infinity text-red-500 loading-lg"></span>
+      </div>
+    );
   }
 
   return (
@@ -33,10 +39,14 @@ const Details = () => {
         </h1>
         <p className="text-lg mb-2">প্রকাশনীঃ {book.publishedBy}</p>
         <p className="text-lg mb-2">লেখকঃ {book.writer}</p>
-        <img className="md:w-[300px] shadow-xl h-96 flex mx-auto" src={book.image} alt="" />
+        <img
+          className="w-96 shadow-xl h-96 flex mx-auto"
+          src={book.image}
+          alt=""
+        />
         <p className="text-left ">
           <span className="font-bold ">
-            কিছু কথাঃ
+            নোটঃ
             <br />
             <br />
           </span>{' '}

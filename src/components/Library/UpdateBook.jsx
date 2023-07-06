@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Header from '../Header';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 
 const UpdateBook = () => {
   const { id } = useParams();
   const [book, setBook] = useState(null);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     writer: '',
@@ -14,14 +16,17 @@ const UpdateBook = () => {
     description: '',
     image: '',
   });
+  console.log('formData', formData);
 
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/books/${id}`);
+        const response = await fetch(
+          `https://atikul-islam-books-server-bayzidhasan6666.vercel.app/books/${id}`
+        );
         const data = await response.json();
         setBook(data);
-        setFormData(data); // Set the book data as the initial form values
+        setFormData(data);
       } catch (error) {
         console.error('Error fetching book:', error);
       }
@@ -42,35 +47,49 @@ const UpdateBook = () => {
     }
 
     // Send the book data to the server
-    fetch(`http://localhost:5000/books/${id}`, {
-      method: 'PUT', // or 'PATCH'
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `https://atikul-islam-books-server-bayzidhasan6666.vercel.app/books/${book._id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
-        console.log('Book updated successfully:', data);
-        // Reset the form after successful update
-        setFormData({
-          name: '',
-          writer: '',
-          publishedBy: '',
-          language: '',
-          description: '',
-          image: '',
-        });
+        //  // Reset the form after successful update
+        //  setFormData({
+        //    name: '',
+        //    writer: '',
+        //    publishedBy: '',
+        //    language: '',
+        //    description: '',
+        //    image: '',
+        //  });
 
-        // Show Swal notification
-        Swal.fire({
-          icon: 'success',
-          title: 'Book Updated',
-          text: 'The book has been successfully updated!',
-        });
+        if (data.success === true) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Book Updated',
+            text: 'The book has been successfully updated!',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Update Error',
+            text: 'Failed to update the book. Please try again.',
+          });
+        }
       })
       .catch((error) => {
         console.error('Error updating book:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Update Error',
+          text: 'An error occurred while updating the book. Please try again.',
+        });
       });
   };
 
@@ -82,16 +101,29 @@ const UpdateBook = () => {
   };
 
   if (!book) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-infinity text-red-500 loading-lg"></span>
+      </div>
+    );
   }
   return (
     <>
       {' '}
       <Header></Header>
-      <section id="" className="py-20 tg">
-        <div className="mb-10">
+      <section id="" className="py-20 tg px-2">
+        <div className="mb-10 flex justify-center items-center gap-5">
           {' '}
-          <h1 className="heading gradient-text">Update This Book</h1>
+          <div>
+            {' '}
+            <h1 className="heading gradient-text">Update This Book</h1>
+          </div>
+          <div className="buttons">
+            {' '}
+            <a href="#" onClick={() => navigate(-1)}>
+              <RiArrowGoBackFill className="i" />
+            </a>
+          </div>
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg shadow-2xl p-8 neu">
           <form className="space-y-6" onSubmit={handleSubmit}>

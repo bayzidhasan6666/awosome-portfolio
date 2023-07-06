@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import Header from '../Header';
+import { RiArrowGoBackFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 
 const AddBooks = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ const AddBooks = () => {
     description: '',
     image: '',
   });
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +28,7 @@ const AddBooks = () => {
     }
 
     // Send the book data to the server
-    fetch('http://localhost:5000/books', {
+    fetch('https://atikul-islam-books-server.vercel.app/books', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -68,10 +72,18 @@ const AddBooks = () => {
       {' '}
       <Header></Header>
       <section id="" className="py-20 tg">
-        <div className="mb-10">
+        <div className="mb-10 flex justify-center items-center gap-5">
           {' '}
-          <h1 className="heading gradient-text">Add 
-          A Book</h1>
+          <div>
+            {' '}
+            <h1 className="heading gradient-text">Add A Book</h1>
+          </div>
+          <div className="buttons">
+            {' '}
+            <a href="#" onClick={() => navigate(-1)}>
+              <RiArrowGoBackFill className="i" />
+            </a>
+          </div>
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 rounded-lg shadow-2xl p-8 neu">
           <form className="space-y-6" onSubmit={handleSubmit}>
