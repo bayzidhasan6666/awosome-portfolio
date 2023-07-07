@@ -54,6 +54,11 @@ const BookList = () => {
               icon: 'success',
               title: 'Book Deleted',
               text: 'The book has been successfully deleted!',
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
             });
             // Remove the deleted book from the state
             setBooks((prevBooks) =>
