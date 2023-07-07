@@ -17,7 +17,7 @@ const UpdateBook = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/books/${id}`);
+        const response = await fetch(`https://atikul-islam-books-server.vercel.app/books/${id}`);
         const data = await response.json();
         setBook(data);
       } catch (error) {
@@ -55,7 +55,7 @@ const UpdateBook = () => {
         };
 
         try {
-          const response = await fetch(`http://localhost:5000/books/${id}`, {
+          const response = await fetch(`https://atikul-islam-books-server.vercel.app/books/${id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
