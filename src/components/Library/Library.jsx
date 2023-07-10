@@ -17,7 +17,7 @@ const Library = () => {
   }, []);
 
   return (
-    <div className="h-[4000px]">
+    <div className="h-fit">
       <Header></Header>
 
       {isLoading ? (

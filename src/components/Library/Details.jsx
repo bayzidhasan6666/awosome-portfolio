@@ -33,7 +33,7 @@ const Details = () => {
   return (
     <div className="">
       <Header></Header>
-      <div className="mt-10 lg:h-screen text-center space-y-4 md:px-5 px-2 py-5">
+      <div className="mt-10 lg:h-screen text-gray-400 text-center space-y-4 md:px-5 px-2 py-5">
         <h1 className="text-2xl text-center bg-gradient-to-r from-red-600 to-purple-600 bg-clip-text text-transparent font-bold mb-4">
           {book.name}
         </h1>

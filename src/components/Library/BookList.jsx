@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { BiSolidEdit } from 'react-icons/bi';
 import {
   BsArrowUpRightSquare,
   BsFileEarmarkPlus,
   BsTrash,
 } from 'react-icons/bs';
-import { BiSolidEdit } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [deleteBookId, setDeleteBookId] = useState(null);
+  const [password, setPassword] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +34,27 @@ const BookList = () => {
     fetchData();
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDeleteClick = (id) => {
+    setDeleteBookId(id);
+    setIsModalOpen(true);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    setIsLoading(true); // Set loading state
+
+    // Simulate password validation
+    setTimeout(() => {
+      if (password === 'ai') {
+        deleteBook(deleteBookId); // Call deleteBook function with the book ID
+      } else {
+        Swal.fire('Error', 'Incorrect password', 'error');
+        setIsLoading(false); // Reset loading state
+      }
+    }, 1000);
+  };
+
+  const deleteBook = (id) => {
     // Show Swal confirmation prompt
     Swal.fire({
       title: 'Are you sure?',
@@ -61,6 +88,7 @@ const BookList = () => {
               timerProgressBar: true,
             });
             // Remove the deleted book from the state
+            setDeleteBookId(null);
             setBooks((prevBooks) =>
               prevBooks.filter((book) => book._id !== id)
             );
@@ -72,6 +100,19 @@ const BookList = () => {
     });
   };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setPassword('');
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchKeyword(event.target.value);
+  };
+
+  const filteredBooks = books.filter((book) =>
+    book.name.toLowerCase().includes(searchKeyword.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto py-8">
       <div className="">
@@ -80,14 +121,65 @@ const BookList = () => {
           {' '}
           <Link
             to={'/addBooks'}
-            className="add flex items-center gap-2 text-emerald-500 cursor-pointe"
+            className="add flex mb-5 items-center gap-2 text-emerald-500 cursor-pointe"
           >
             Add A Book<BsFileEarmarkPlus></BsFileEarmarkPlus>
           </Link>
         </div>
+        <div className="md:flex  w-fit  items-center p-3 space-x-6 neu rounded-xl mx-auto  ">
+          <div className="flex  items-center p-4 w-72 space-x-4 rounded-lg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 opacity-30"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+            <input
+              className="neu px-5 py-3 outline-none"
+              type="text"
+              placeholder="Article name or keyword..."
+              value={searchKeyword}
+              onChange={handleSearchChange}
+            />
+          </div>
+          <div className="flex py-3 px-4 rounded-lg text-gray-500 font-semibold cursor-pointer">
+            <span>All categorie</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+          <div className="bg-red-600 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+            <span>Search</span>
+          </div>
+        </div>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 my-10 w-fit mx-auto">
-        {books.map((book) => (
+      <div
+        className="grid grid-cols-1 gap-6Here's the continuation of the code:
+
+```jsx
+md:grid-cols-2 lg:grid-cols-3 my-10 w-fit mx-auto"
+      >
+        {filteredBooks.map((book) => (
           <div
             key={book._id}
             className="group relative items-center justify-center overflow-hidden cursor-pointer border-8 border-[#2e2f2f] shadow-xl"
@@ -113,7 +205,7 @@ const BookList = () => {
                   <BiSolidEdit className="text-emerald-500 cursor-pointer w-5 h-5"></BiSolidEdit>
                 </Link>
                 <BsTrash
-                  onClick={() => handleDelete(book._id)}
+                  onClick={() => handleDeleteClick(book._id)}
                   className="text-red-500 cursor-pointer w-5 h-5"
                 ></BsTrash>
                 <Link to={`/details/${book._id}`}>
@@ -124,6 +216,46 @@ const BookList = () => {
           </div>
         ))}
       </div>
+      {/* Password Modal */}
+      <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Delete Confirmation"
+        className={'neu p-20'}
+      >
+        <h2 className="text-xl mb-4">Enter Password to Confirm Deletion</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div className="flex flex-col">
+            <label htmlFor="password" className="text-lg mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="rounded-lg p-3"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="flex justify-end mt-6">
+            <button
+              type="button"
+              className="nbtn mr-2 py-2 px-4 rounded-lg"
+              onClick={closeModal}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="nbtn shadow-xl py-2 px-4 rounded-lg"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Submitting...' : 'Submit'}
+            </button>
+          </div>
+        </form>
+      </ReactModal>
     </div>
   );
 };

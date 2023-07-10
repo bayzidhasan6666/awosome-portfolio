@@ -7,6 +7,7 @@ import Library from './components/Library/Library.jsx';
 import AddBooks from './components/Library/AddBooks.jsx';
 import Details from './components/Library/Details.jsx';
 import UpdateBook from './components/Library/UpdateBook.jsx';
+import Password from './components/Password/Password.jsx';
 
 const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +33,11 @@ const Main = () => {
     },
     {
       path: '/addBooks',
-      element: <AddBooks></AddBooks>,
+      element: (
+        <Password>
+          <AddBooks></AddBooks>
+        </Password>
+      ),
     },
     {
       path: '/details/:id',
@@ -40,7 +45,16 @@ const Main = () => {
     },
     {
       path: '/edit/:id',
-      element: <UpdateBook></UpdateBook>,
+      element: (
+        <Password>
+          {' '}
+          <UpdateBook></UpdateBook>
+        </Password>
+      ),
+    },
+    {
+      path: '/password',
+      element: <Password></Password>,
     },
   ]);
 
@@ -51,7 +65,7 @@ const Main = () => {
           <span className="loading loading-infinity text-red-500 loading-lg"></span>
         </div>
       ) : (
-        <div className="loader bg-[#212428] p-3 md:p-5">
+        <div className="loader bg-[#212428] p-2 md:p-5">
           <RouterProvider router={router} />
         </div>
       )}
